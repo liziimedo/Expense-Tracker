@@ -31,10 +31,10 @@ def track_expenses():
 
         # Initialize budget for the first month or adjust for subsequent months
         if i == 0:
-            print(f"Your budget for {month} is ${budget}")
+            print(f"Your budget for {month} is ${budget:.2f}")
         else:
             budget += money_left
-            print(f"Your budget for {month} is ${budget}")
+            print(f"Your budget for {month} is ${budget:.2f}")
 
         total_expenses = 0.0
         expenses = []
