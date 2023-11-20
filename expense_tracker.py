@@ -96,7 +96,7 @@ def track_expenses():
             if add_month.lower() == "no":
                 break
 
-    print("Thank you for using the expense tracker.")
+    print("\nThank you for using the expense tracker!")
 
 def analyze_expenses(expenses, budget):
     """Analyze and provide insights into the user's spending patterns."""
