@@ -1,8 +1,6 @@
 # Expense-Tracker
 This is an interactive expense tracking system. Users can input and monitor their monthly expenses over multiple months, receiving insights into their spending patterns.
 
-[![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/<liziimedo>/<Expense-Tracker>)
-
 Here's a breakdown of its functionality:
 
 Expense Representation:
