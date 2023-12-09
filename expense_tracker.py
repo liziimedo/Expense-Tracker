@@ -19,9 +19,7 @@ def get_valid_input(prompt, input_type=float):
 def track_expenses():
     """Track expenses for multiple months."""
     money_left = 0.0  # Added initialization
-    while True:
-        num_months = get_valid_input("How many months do you want to track? (Enter a number): ", int)
-        break
+    num_months = get_valid_input("How many months do you want to track? (Enter a number): ", int)
 
     for i in range(num_months):
         current_date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
