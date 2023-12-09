@@ -87,7 +87,7 @@ def track_expenses():
         print(f"Average Expense: ${average_expense:.2f}")
         print(f"Money left for {month}: ${money_left}")
 
-        # Advanced Feature: Expense Analysis
+        # Expense Analysis
         analyze_expenses(expenses, budget)
 
         # Ask if the user wants to add another month
