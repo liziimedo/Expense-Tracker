@@ -23,8 +23,12 @@ def track_expenses():
 
     for i in range(num_months):
         current_date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        month = input(f"Which month do you want to track expenses for? (Month {i + 1}): ")
-        
+
+        # Ask the user to choose a month
+        month_num = get_valid_input(f"Choose a month (1-January, 2-February, ..., 12-December) for Month {i + 1}: ", int)
+        month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+        month = month_names[month_num - 1]
+
         budget = get_valid_input(f'How much budget for {month}? ')
 
         # Initialize budget for the first month or adjust for subsequent months
@@ -84,6 +88,13 @@ def track_expenses():
         print(f"Number of Expenses: {num_expenses}")
         print(f"Average Expense: ${average_expense:.2f}")
         print(f"Money left for {month}: ${money_left}")
+
+        # Ask if the user wants to roll over remaining money to the next month
+        roll_over = input("Do you want to roll over the remaining money to the next month? (yes/no) ")
+        if roll_over.lower() == 'yes':
+            money_left = budget + money_left  
+        else:
+            money_left = 0
 
         # Expense Analysis
         analyze_expenses(expenses, budget)
@@ -154,6 +165,7 @@ def print_expenses(expenses):
 
 # Run the expense tracking function
 track_expenses()
+
 
 
 
