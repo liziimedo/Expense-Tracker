@@ -6,6 +6,9 @@ class Expense:
         self.amount = amount
         self.category = category
         self.date = date
+# Defined a class called Expense with an __init__ method 
+# (constructor) that initializes instances of the class 
+# with attributes like name, amount, category, and date.
 
 def get_valid_input(prompt, input_type=float):
     """Get valid user input with type validation."""
@@ -15,35 +18,45 @@ def get_valid_input(prompt, input_type=float):
             return user_input
         except ValueError:
             print("Invalid input. Please enter a valid number.")
+# Defined a function get_valid_input that takes a prompt and an optional input type as arguments. 
+# It repeatedly asks the user for input until a valid input.
 
 def track_expenses():
     """Track expenses for multiple months."""
     money_left = 0.0  # Added initialization
     num_months = get_valid_input("How many months do you want to track? (Enter a number): ", int)
+# Defined a function track_expenses that handles expense tracking for multiple months. 
+# It initializes money_left and prompts the user to input the number of months to track.
 
     for i in range(num_months):
         current_date = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    #Iterated over each month, getting the current date and time using datetime.now().
 
         # Ask the user to choose a month
+        # convert the input to the corresponding month name
         month_num = get_valid_input(f"Choose a month (1-January, 2-February, ..., 12-December) for Month {i + 1}: ", int)
         month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
         month = month_names[month_num - 1]
 
         budget = get_valid_input(f'How much budget for {month}? ')
 
-        # Initialize budget for the first month or adjust for subsequent months
+        # Print the budget for the current month, 
+        # adjusting for any remaining money from the previous month.
         if i == 0:
             print(f"Your budget for {month} is ${budget:.2f}")
         else:
             budget += money_left
             print(f"Your budget for {month} is ${budget:.2f}")
 
+        # Initialize variables to track total expenses, 
+        # a list for individual expenses, and a dictionary for category-wise expenses.
         total_expenses = 0.0
         expenses = []
         category_expenses = {}
 
         while True:
             expense_name = input("Enter the name of the expense (or type 'done' to finish): ")
+            # Entered a loop to input expenses until the user enters 'done'.
 
             if expense_name.lower() == 'done':
                 break
@@ -68,7 +81,9 @@ def track_expenses():
 
             expense = Expense(name=expense_name, amount=expense_amount, category=expense_category, date=current_date)
             expenses.append(expense)
-
+            # Created an instance of the Expense class
+            # append it to the list of expenses
+        
         # Calculate and display expenses and statistics
         total_expenses = sum(expense.amount for expense in expenses)
         money_left = budget - total_expenses
