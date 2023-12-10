@@ -90,11 +90,10 @@ def track_expenses():
         print(f"Money left for {month}: ${money_left}")
 
         # Ask if the user wants to roll over remaining money to the next month
-        roll_over = input("Do you want to roll over the remaining money to the next month? (yes/no) ")
-        if roll_over.lower() == 'yes':
-            money_left = budget + money_left  
-        else:
-            money_left = 0
+        if i != (num_months -1):
+            roll_over = input("Do you want to roll over the remaining money to the next month? (yes/no) ")
+            if roll_over.lower() == 'no':
+                money_left = 0
 
         # Expense Analysis
         analyze_expenses(expenses, budget)
@@ -117,7 +116,6 @@ def analyze_expenses(expenses, budget):
     for category, amount in top_category:
         print(f"{category}: ${amount}")
     # Spending Distribution 
-    budget = sum(expense.amount for expense in expenses)
     distribution = get_spending_distribution(expenses, budget)
     print("\nSpending Distribution:")
     for category, data in distribution.items():
@@ -165,11 +163,3 @@ def print_expenses(expenses):
 
 # Run the expense tracking function
 track_expenses()
-
-
-
-
-
-
-
-
